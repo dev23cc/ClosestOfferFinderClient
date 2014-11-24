@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ClosestOfferFinder.iml" filepath="$PROJECT_DIR$/ClosestOfferFinder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ClosestOfferFinderClient.iml" filepath="$PROJECT_DIR$/ClosestOfferFinderClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

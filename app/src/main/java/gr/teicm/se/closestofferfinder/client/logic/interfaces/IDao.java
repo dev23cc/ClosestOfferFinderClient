@@ -5,5 +5,5 @@ package gr.teicm.se.closestofferfinder.client.logic.interfaces;
  */
 public interface IDao {
     IRequest getRequest();
-    IOffer setOffer(IOffer Offer);
+    IOffer getOffer(IOffer Offer);
 }
