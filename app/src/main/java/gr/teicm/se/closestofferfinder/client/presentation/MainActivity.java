@@ -10,21 +10,27 @@ import gr.teicm.se.closestofferfinder.client.logic.Controller;
 
 
 public class MainActivity extends Activity {
-
+    protected Controller controller;
+    protected String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        controller= new Controller();
+        name = controller.getOfferName();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
     }
 
     private void populateListView(){
 
-        String[] myItems= {"First Offer","Second Offer","Third Offer"} ;
+        String[] myItems= {name,"Second Offer","Third Offer"} ;
 
+        //     ArrayAdapter<String> adapter = new ArrayAdapter<String> (this,R.layout.offer,myItems) ;
         ArrayAdapter<String> adapter = new ArrayAdapter<String> (this,R.layout.offer,myItems) ;
         ListView list = (ListView) findViewById(R.id.MyOffers) ;
+
+        // create the grid item mapping
+
         list.setAdapter(adapter) ;
 
     }
@@ -32,7 +38,7 @@ public class MainActivity extends Activity {
 
         public void OnClickedTrackOffers(View view){
 
-            populateListView() ;
+            populateListView();
 
         }
 

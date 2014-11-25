@@ -10,12 +10,10 @@ import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
  */
 public class Controller {
 
-    public String[] text ;
+ public String getOfferName() {
+    String s = "Troller";
+    return(s);
 
-    public String[] getMyOffers(){
-
-
-        return text  ;
-    }
+ }
 
 }
