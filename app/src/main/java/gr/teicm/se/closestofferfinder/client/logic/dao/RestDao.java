@@ -18,10 +18,14 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import gr.teicm.se.closestofferfinder.client.logic.interfaces.IDao;
+import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
+import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
+
 /**
  * Created by user on 21/11/2014.
  */
-public class RestDao {
+public class RestDao implements IDao {
     public String result;
     public RestDao() throws IOException {
         String url = "http://83.212.101.78:8080/WSoffer/service/getAllOffersJSON";
@@ -77,5 +81,15 @@ public class RestDao {
        result="notnull";
         return(result);
 
+    }
+
+    @Override
+    public IRequest getRequest() {
+        return null;
+    }
+
+    @Override
+    public IOffer getOffer() {
+        return(null);
     }
 }

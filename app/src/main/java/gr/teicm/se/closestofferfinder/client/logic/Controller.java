@@ -17,7 +17,7 @@ public class Controller {
     public void Controller() {
         try {
             dao = new RestDao();
-            offer = dao.getResult();
+          //  offer = dao.getResult();
         } catch (IOException e) {
             e.printStackTrace();
             offer=" ";
@@ -37,6 +37,7 @@ public class Controller {
     public String getName() {
         try {
         if (dao.getResult()==null) offer="isnull";
+            else offer=dao.getResult();
         } catch(NullPointerException e) {
             offer="nullstr";
         }
