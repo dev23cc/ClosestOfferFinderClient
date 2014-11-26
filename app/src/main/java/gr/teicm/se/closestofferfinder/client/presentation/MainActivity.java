@@ -7,21 +7,26 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import gr.teicm.se.closestofferfinder.client.logic.Controller;
+import gr.teicm.se.closestofferfinder.client.logic.Offer;
 
 
 public class MainActivity extends Activity {
     protected Controller controller;
     protected String name;
+ //   protected Offer offer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         controller= new Controller();
-        name = controller.getOfferName();
+    //    name= controller.hasBody();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
     }
 
     private void populateListView(){
+       // name = controller.getOfferName();
+        name=controller.getName();
+        if(name==null) name ="null";
 
         String[] myItems= {name,"Second Offer","Third Offer"} ;
 
