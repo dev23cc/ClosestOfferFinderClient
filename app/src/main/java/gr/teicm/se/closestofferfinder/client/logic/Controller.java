@@ -15,13 +15,10 @@ public class Controller {
     RestDao dao;
     String offer;
     public void Controller() {
-        try {
+
             dao = new RestDao();
           //  offer = dao.getResult();
-        } catch (IOException e) {
-            e.printStackTrace();
-            offer=" ";
-        }
+
 
 
         //  offer=dao.getOffer();
@@ -45,8 +42,15 @@ public class Controller {
     }
  public String getOfferName() {
     String s = "Troller";
-    return("off");
+     try {
+      //   s =dao.getWSFile();
 
+     } catch (Exception e) {
+         e.printStackTrace();
+         e.getMessage();
+         return(s);
+     }
+     return(s);
  }
 
 }
