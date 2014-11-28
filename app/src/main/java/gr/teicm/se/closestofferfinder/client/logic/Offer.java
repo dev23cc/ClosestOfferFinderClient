@@ -2,24 +2,39 @@ package gr.teicm.se.closestofferfinder.client.logic;
 
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 /**
  * Created by user on 25/11/2014.
  */
 
-
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Offer implements IOffer {
-    int id, compId, catId;
-    String offerName, descr;
-    double disc,price;
+    @JsonProperty("id")
+    int id;
+    @JsonProperty("compId")
+    int compId;
+    @JsonProperty("catId")
+    int catId;
+    @JsonProperty("offerName")
+    String offerName;
+    @JsonProperty("descr")
+    String descr;
+    @JsonProperty("disc")
+    double disc;
+    @JsonProperty("price")
+    double price;
     public Offer() {
-        id=0;
+/*        id=0;
         compId=0;
         catId=0;
         offerName="";
         descr="";
         disc=0;
-        price=0;
+        price=0;*/
     }
     @Override
     public int getOfferId() {

@@ -9,11 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+//import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.*;
+import com.fasterxml.jackson.databind.*;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,6 +27,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.List;
 
 import gr.teicm.se.closestofferfinder.client.logic.Controller;
 import gr.teicm.se.closestofferfinder.client.logic.Offer;
@@ -29,7 +37,7 @@ import gr.teicm.se.closestofferfinder.client.logic.Offer;
 public class MainActivity extends Activity {
     protected Controller controller;
     protected String name;
- //   protected Offer offer;
+    protected Offer offer;
  private class GetFileTask extends AsyncTask<String, Void, String> {
      protected String doInBackground(String... urls) {
          return getFile(urls[0]);
@@ -37,12 +45,22 @@ public class MainActivity extends Activity {
 
      protected void onPostExecute(String result) {
          try {
-
-
+             ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+            //List<Offer> reslt = mapper.readValue(result, mapper.getTypeFactory().constructCollectionType(List.class, Offer.class));
+             List<Offer> reslt = Arrays.asList(mapper.readValue(result, Offer[].class));
+             //   JSONArray  array = reslt.getJSONArray("offer");
+           //  name = array.getJSONObject(1).getString("offerName");
+             /*for(int i=0; i<reslt.length(); i++) {
+            name = reslt.getJSONObject(i).getString("descr");
+             }*/
+            // name=description;
+             name = reslt.get(0).getOfferName();
+                MainActivity.this.populateListView();
              Toast.makeText(getBaseContext(),
-                     result,
+                     name,
                      Toast.LENGTH_SHORT).show();
-             name=result;
+           //  ObjectMapper mapper = new ObjectMapper();
+          //   Offer[] myoffer = mapper.readValue(result, Offer[].class);
          } catch (Exception e) {
              Log.d("ReadOfferJSONFeedTask", e.getLocalizedMessage());
          }
@@ -96,8 +114,7 @@ public class MainActivity extends Activity {
         };
         httpClient.start();*/
         if(name==null) name ="null";
-        new GetFileTask().execute(
-                "http://83.212.101.78:8080/WSoffer/service/getOffersByStoreJSON/0"  );
+
         String[] myItems= {name,"Second Offer","Third Offer"} ;
 
         //     ArrayAdapter<String> adapter = new ArrayAdapter<String> (this,R.layout.offer,myItems) ;
@@ -112,6 +129,8 @@ public class MainActivity extends Activity {
 
 
         public void OnClickedTrackOffers(View view){
+            new GetFileTask().execute(
+                    "http://83.212.101.78:8080/WSoffer/service/getOffersByStoreJSON/0"  );
 
             populateListView();
 
