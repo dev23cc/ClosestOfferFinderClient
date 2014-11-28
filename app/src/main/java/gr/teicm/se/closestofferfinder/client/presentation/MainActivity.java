@@ -38,26 +38,36 @@ public class MainActivity extends Activity {
     protected Controller controller;
     protected String name;
     protected Offer offer;
- private class GetFileTask extends AsyncTask<String, Void, String> {
+    private View view;
+
+    private class GetFileTask extends AsyncTask<String, Void, String> {
      protected String doInBackground(String... urls) {
          return getFile(urls[0]);
      }
 
      protected void onPostExecute(String result) {
          try {
-             ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+          //   String file ="[{\"offer\":{\"id\":1,\"compId\":0,\"catId\":0,\"offerName\":\"Α\",\"descr\":\"Προσφορά 1\",\"disc\":0,\"price\":100}}]";
+         //    ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
             //List<Offer> reslt = mapper.readValue(result, mapper.getTypeFactory().constructCollectionType(List.class, Offer.class));
-             List<Offer> reslt = Arrays.asList(mapper.readValue(result, Offer[].class));
+         //    List<Offer> reslt = Arrays.asList(mapper.readValue(result, Offer[].class));
+           //// Offer[] offers=  mapper.readValue(file, Offer[].class);
+           //  Offer firstOffer = offers[0];
+           //  JsonNode obj = mapper.readTree(file);
+           // JsonNode node = obj.get("offerName");
+
+           //  name = reslt.get(1).getOfferName();
+            // name = offers[0].getOfferName();
              //   JSONArray  array = reslt.getJSONArray("offer");
            //  name = array.getJSONObject(1).getString("offerName");
              /*for(int i=0; i<reslt.length(); i++) {
             name = reslt.getJSONObject(i).getString("descr");
              }*/
             // name=description;
-             name = reslt.get(0).getOfferName();
+            // name = result;
                 MainActivity.this.populateListView();
              Toast.makeText(getBaseContext(),
-                     name,
+                     result,
                      Toast.LENGTH_SHORT).show();
            //  ObjectMapper mapper = new ObjectMapper();
           //   Offer[] myoffer = mapper.readValue(result, Offer[].class);
@@ -126,11 +136,20 @@ public class MainActivity extends Activity {
         list.setAdapter(adapter) ;
 
     }
+    public void OnClickedClientVersion(View view) {
+        Toast.makeText(getBaseContext(),
+                "Client Version 0.0.1",
+                Toast.LENGTH_SHORT).show();
+    }
+        public void OnClickedWSVersion(View view) {
 
+            new GetFileTask().execute(
+                    "http://83.212.101.78:8080/WSoffer/service/getVersionWsJSON"  );
 
+        }
         public void OnClickedTrackOffers(View view){
             new GetFileTask().execute(
-                    "http://83.212.101.78:8080/WSoffer/service/getOffersByStoreJSON/0"  );
+                    "http://83.212.101.78:8080/WSoffer/service/getAllOffersJSON"  );
 
             populateListView();
 
