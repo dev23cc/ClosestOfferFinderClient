@@ -1,8 +1,13 @@
 package gr.teicm.se.closestofferfinder.client.logic;
 
+import com.ning.http.client.AsyncHttpClient;
+import com.ning.http.client.Response;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import gr.teicm.se.closestofferfinder.client.logic.dao.RestDao;
 import gr.teicm.se.closestofferfinder.client.logic.dao.WebServiceDao;
@@ -38,12 +43,27 @@ public class Controller {
         } catch(NullPointerException e) {
             offer="nullstr";
         }
+        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
+        Future<Response> f = asyncHttpClient.prepareGet("http://83.212.101.78:8080/WSoffer/service/getOffersByStoreJSON/0").execute();
+        Response r = null;
+        try {
+            r = f.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        try {
+            offer=r.getResponseBody();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return(offer);
     }
  public String getOfferName() {
     String s = "Troller";
      try {
-      //   s =dao.getWSFile();
+        s =dao.getWSFile();
 
      } catch (Exception e) {
          e.printStackTrace();
