@@ -20,6 +20,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,11 +28,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import gr.teicm.se.closestofferfinder.client.logic.Controller;
 import gr.teicm.se.closestofferfinder.client.logic.Offer;
+import gr.teicm.se.closestofferfinder.client.logic.interfaces.Store;
 
 
 public class MainActivity extends Activity {
@@ -46,7 +50,30 @@ public class MainActivity extends Activity {
      }
 
      protected void onPostExecute(String result) {
+         List<Offer> off = new ArrayList<Offer>();
+         Offer myOffer = new Offer();
+         JSONObject obj = new JSONObject();
+         JSONObject offobj = new JSONObject();
+         RestTemplate restTemplate= new RestTemplate();
+         //   Offer offer;
          try {
+
+             URL jsonURL = new URL("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3");
+          //   JSONArray arr = new JSONArray("{\"offer\":{\"id\":3,\"compId\":2,\"catId\":1,\"offerName\":\"σοκολάτες\",\"descr\":\"20% φθηνότερα\",\"disc\":20,\"price\":1.5}}");
+             obj = new JSONObject(result);
+             offobj = obj.getJSONObject("offer");
+             String ofname = offobj.getString("offerName");
+             if(ofname == null) ofname="empty";
+           //  for (int i=0; i arr.length(); i++) off.add();
+             ObjectMapper mapper= new ObjectMapper();
+            Store store ;
+             store = mapper.readValue(result, Store.class);
+            offer = store.getOffer()   ;
+             ofname = offer.getOfferName() +" "+ offer.getDescription() ;
+             name = ofname;
+          //   offer = restTemplate.getForObject("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3", Offer.class);
+           //  offer = store.getOffer()   ;
+           //  ofname = offer.getOfferName() +" "+ offer.getDescription() ;
           //   String file ="[{\"offer\":{\"id\":1,\"compId\":0,\"catId\":0,\"offerName\":\"Α\",\"descr\":\"Προσφορά 1\",\"disc\":0,\"price\":100}}]";
          //    ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
             //List<Offer> reslt = mapper.readValue(result, mapper.getTypeFactory().constructCollectionType(List.class, Offer.class));
@@ -67,7 +94,7 @@ public class MainActivity extends Activity {
             // name = result;
                 MainActivity.this.populateListView();
              Toast.makeText(getBaseContext(),
-                     result,
+                     ofname,
                      Toast.LENGTH_SHORT).show();
            //  ObjectMapper mapper = new ObjectMapper();
           //   Offer[] myoffer = mapper.readValue(result, Offer[].class);
@@ -148,9 +175,10 @@ public class MainActivity extends Activity {
 
         }
         public void OnClickedTrackOffers(View view){
-            new GetFileTask().execute(
-                    "http://83.212.101.78:8080/WSoffer/service/getAllOffersJSON"  );
+          //  new GetFileTask().execute(
+          //          "http://83.212.101.78:8080/WSoffer/service/getAllOffersJSON"  );
 
+            new GetFileTask().execute("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3");
             populateListView();
 
         }

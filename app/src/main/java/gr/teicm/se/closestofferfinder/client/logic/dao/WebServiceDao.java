@@ -18,7 +18,7 @@ import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
  */
 public class WebServiceDao implements IDao {
     RestTemplate restTemplate;
- //   Offer offer;
+    //   Offer offer;
     String response;
  //   Boolean body;
     public WebServiceDao(){
