@@ -4,8 +4,9 @@ package gr.teicm.se.closestofferfinder.client.logic;
  * Created by user on 5/12/2014.
  */
 public class WebServiceName {
-    public getFullWSUrl() {
-
+    public String createFullWSUrl() {
+        // http://83.212.101.78:8080/WSoffer/service/getVersionWsJSON
+        return(protocol + ":" +  "//" + WSIp + ":" + WSPort + "/" + WebApplicationName  + "/" + "service" + "" );
 
     }
     public String getWSIp() {
@@ -39,8 +40,8 @@ public class WebServiceName {
         this.WSPort = "8080";
     }
 
-    public void setProtocol() {
-        this.protocol = protocol;
+    private void setProtocol() {
+        this.protocol = "http";
     }
 
     private String protocol;
