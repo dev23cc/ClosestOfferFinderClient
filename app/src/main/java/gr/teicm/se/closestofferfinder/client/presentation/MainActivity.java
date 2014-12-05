@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
      }
 
      protected void onPostExecute(String result) {
+         String version;
          List<Offer> off = new ArrayList<Offer>();
          Offer myOffer = new Offer();
          JSONObject obj = new JSONObject();
@@ -57,7 +58,7 @@ public class MainActivity extends Activity {
          RestTemplate restTemplate= new RestTemplate();
          //   Offer offer;
          try {
-
+                version = response;
              URL jsonURL = new URL("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3");
           //   JSONArray arr = new JSONArray("{\"offer\":{\"id\":3,\"compId\":2,\"catId\":1,\"offerName\":\"σοκολάτες\",\"descr\":\"20% φθηνότερα\",\"disc\":20,\"price\":1.5}}");
              obj = new JSONObject(result);
