@@ -1,43 +1,53 @@
 package gr.teicm.se.closestofferfinder.client.logic;
 
 /**
- * Created by user on 5/12/2014.
+ * Created by dev23cc on 5/12/2014.
  */
 public class WebServiceName {
+    public WebServiceName() {
+        setMethods();
+    }
+    public void setMethods() {
+        setProtocol();
+        setWSIp();
+        setWSPort();
+        setWebApplicationName();
+        setWebMethodName();
+    }
     public String createFullWSUrl() {
         // http://83.212.101.78:8080/WSoffer/service/getVersionWsJSON
-        return(protocol + ":" +  "//" + WSIp + ":" + WSPort + "/" + WebApplicationName  + "/" + "service" + "" );
-
+        return ("http://graph.facebook.com/pivotalsoftware");
+      //  return(protocol + ":" +  "//" + wsIp + ":" + wsPort + "/" + webApplicationName + "/" + "service" + "/" + webMethodName );
     }
-    public String getWSIp() {
-        return WSIp;
+    public String getWsIp() {
+        return wsIp;
     }
 
     private void setWSIp() {
-        this.WSIp = "83.212.101.78";
+        this.wsIp = "83.212.101.78";
     }
 
     public String getWebApplicationName() {
-        return WebApplicationName;
+        return webApplicationName;
     }
 
     private void setWebApplicationName() {
-        WebApplicationName = "WSoffer";
+        webApplicationName = "WSoffer";
     }
 
     public String getWebMethodName() {
-        return WebMethodName;
+        return webMethodName;
     }
 
-    private void setWebMethodName(String webMethodName) {
-        WebMethodName = webMethodName;
+    private void setWebMethodName() {
+        webMethodName = "getAllOffersJSON";
     }
-    public String getWSPort() {
-        return WSPort;
+    public String getWsPort() {
+        return wsPort;
     }
 
     private void setWSPort() {
-        this.WSPort = "8080";
+        this.wsPort = "8080";
     }
 
     private void setProtocol() {
@@ -45,10 +55,10 @@ public class WebServiceName {
     }
 
     private String protocol;
-    private String WSIp;
-    private String WSPort;
-    private String WebApplicationName;
-    private String WebMethodName;
+    private String wsIp;
+    private String wsPort;
+    private String webApplicationName;
+    private String webMethodName;
 
 
 }

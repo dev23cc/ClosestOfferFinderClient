@@ -32,7 +32,7 @@ import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
 import com.ning.http.client.*;
 import java.util.concurrent.Future;
 /**
- * Created by user on 21/11/2014.
+ * Created by dev23cc on 21/11/2014.
  */
 public class RestDao implements IDao {
     public static String result;

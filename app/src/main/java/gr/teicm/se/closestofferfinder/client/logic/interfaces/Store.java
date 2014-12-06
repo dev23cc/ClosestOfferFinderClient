@@ -3,7 +3,7 @@ package gr.teicm.se.closestofferfinder.client.logic.interfaces;
 import gr.teicm.se.closestofferfinder.client.logic.Offer;
 
 /**
- * Created by user on 5/12/2014.
+ * Created by dev23cc on 5/12/2014.
  */
 public class Store {
     public void setOffer(Offer offer) {

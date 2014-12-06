@@ -14,7 +14,7 @@ import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
 
 /**
- * Created by user on 25/11/2014.
+ * Created by dev23cc on 25/11/2014.
  */
 public class WebServiceDao implements IDao {
     RestTemplate restTemplate;
