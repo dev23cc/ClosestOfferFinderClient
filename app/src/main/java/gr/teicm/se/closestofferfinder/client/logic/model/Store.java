@@ -1,6 +1,6 @@
-package gr.teicm.se.closestofferfinder.client.logic.interfaces;
+package gr.teicm.se.closestofferfinder.client.logic.model;
 
-import gr.teicm.se.closestofferfinder.client.logic.Offer;
+import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
 
 /**
  * Created by dev23cc on 5/12/2014.

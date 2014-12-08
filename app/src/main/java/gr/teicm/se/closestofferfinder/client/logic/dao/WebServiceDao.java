@@ -1,16 +1,9 @@
 package gr.teicm.se.closestofferfinder.client.logic.dao;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-
-import gr.teicm.se.closestofferfinder.client.logic.Offer;
+import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IDao;
-import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
 
 /**

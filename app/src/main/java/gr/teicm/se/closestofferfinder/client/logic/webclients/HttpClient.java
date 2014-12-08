@@ -1,4 +1,4 @@
-package gr.teicm.se.closestofferfinder.client.logic.WebClients;
+package gr.teicm.se.closestofferfinder.client.logic.webclients;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.concurrent.Callable;
 
-import gr.teicm.se.closestofferfinder.client.logic.WebServiceName;
+import gr.teicm.se.closestofferfinder.client.logic.webservicenames.WebServiceName;
 
 /**
  * Created by dev23cc on 5/12/2014.

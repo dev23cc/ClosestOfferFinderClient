@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.*;
+//import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.databind.*;
 
 import org.apache.http.HttpEntity;
@@ -18,25 +18,19 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import gr.teicm.se.closestofferfinder.client.logic.Controller;
-import gr.teicm.se.closestofferfinder.client.logic.Offer;
+import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
 import gr.teicm.se.closestofferfinder.client.logic.concurrency.Task;
-import gr.teicm.se.closestofferfinder.client.logic.interfaces.Store;
+import gr.teicm.se.closestofferfinder.client.logic.model.Store;
 
 
 public class MainActivity extends Activity {
@@ -108,9 +102,10 @@ public class MainActivity extends Activity {
  }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       // controller= new Controller();
+        controller= new Controller();
+  //      name = controller.getOfferName().toString();
     //    name= controller.hasBody();
-        clientTask = new Task();
+       // clientTask = new Task();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -149,9 +144,10 @@ public class MainActivity extends Activity {
 
         };
         httpClient.start();*/
-        if(name==null) name ="null";
 
-        String[] myItems= {s,"Second Offer","Third Offer"} ;
+        if(name==null) name ="isnull";
+
+        String[] myItems= {name,"Second Offer","Third Offer"} ;
 
         //     ArrayAdapter<String> adapter = new ArrayAdapter<String> (this,R.layout.offer,myItems) ;
         ArrayAdapter<String> adapter = new ArrayAdapter<String> (this,R.layout.offer,myItems) ;
@@ -177,8 +173,9 @@ public class MainActivity extends Activity {
           //  new GetFileTask().execute(
           //          "http://83.212.101.78:8080/WSoffer/service/getAllOffersJSON"  );
 
-            this.s = clientTask.downloadJsonResource();
+         //   this.s = clientTask.downloadJsonResource();
          //   new GetFileTask().execute("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3");
+            name = controller.getOfferName();
             populateListView();
 
 

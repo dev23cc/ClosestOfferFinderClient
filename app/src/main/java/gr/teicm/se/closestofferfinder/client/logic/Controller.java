@@ -4,34 +4,26 @@ import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import gr.teicm.se.closestofferfinder.client.logic.dao.RestDao;
-import gr.teicm.se.closestofferfinder.client.logic.dao.WebServiceDao;
-import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
+import gr.teicm.se.closestofferfinder.client.logic.concurrency.Task;
+import gr.teicm.se.closestofferfinder.client.logic.dao.RestClientDao;
+import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
 
 /**
  * Created by dev23cc on 21/11/2014.
  */
 public class Controller {
-    RestDao dao;
+    RestClientDao dao;
+    protected Task clientTask;
     String offer;
-    public void Controller() {
-
-            dao = new RestDao();
-          //  offer = dao.getResult();
-
-
-
-        //  offer=dao.getOffer();
+    public Controller() {
+        clientTask = new Task();
+        downloadResource();
     }
-    public String hasBody() {
-      //  if(dao.hasBody())  return("Yes");
-      //  if(!dao.hasBody()) return("No");
-        return("Nothing");
+    public void downloadResource() {
+        offer = clientTask.downloadJsonResource();
     }
     public Offer getOffer() {
         return(null);
@@ -61,16 +53,9 @@ public class Controller {
         return(offer);
     }
  public String getOfferName() {
-    String s = "Troller";
-     try {
-        s =dao.getWSFile();
 
-     } catch (Exception e) {
-         e.printStackTrace();
-         e.getMessage();
-         return(s);
-     }
-     return(s);
+     if (this.offer == null) this.offer="nnsull";
+     return(this.offer);
  }
 
 }

@@ -3,10 +3,9 @@ package gr.teicm.se.closestofferfinder.client.logic.concurrency;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
-import gr.teicm.se.closestofferfinder.client.logic.WebClients.HttpClient;
+import gr.teicm.se.closestofferfinder.client.logic.webclients.HttpClient;
 
 /**
  * Created by dev23cc on 5/12/2014.
@@ -35,29 +34,8 @@ public class Task {
                 e.printStackTrace();
             }
         }
-
-
-
     }
     public void shutdown() {
         pool.shutdown();
     }
-
-/*    public String foo() {
-        Future<String> future = (Future<String>) pool.submit(new Runnable() {
-            @Override
-            public void run() {
-                // put your code here
-            }
-        });
-        return null;
-    }
-    public void bar() {
-        pool.submit(new Runnable() {
-            @Override
-            public void run() {
-                // put your code here
-            }
-        });
-    }*/
 }

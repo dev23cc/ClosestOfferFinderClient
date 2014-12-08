@@ -1,4 +1,4 @@
-package gr.teicm.se.closestofferfinder.client.logic;
+package gr.teicm.se.closestofferfinder.client.logic.webservicenames;
 
 /**
  * Created by dev23cc on 5/12/2014.
@@ -16,8 +16,8 @@ public class WebServiceName {
     }
     public String createFullWSUrl() {
         // http://83.212.101.78:8080/WSoffer/service/getVersionWsJSON
-        return ("http://graph.facebook.com/pivotalsoftware");
-      //  return(protocol + ":" +  "//" + wsIp + ":" + wsPort + "/" + webApplicationName + "/" + "service" + "/" + webMethodName );
+      //  return ("http://graph.facebook.com/pivotalsoftware");
+        return(protocol + ":" +  "//" + wsIp + ":" + wsPort + "/" + webApplicationName + "/" + "service" + "/" + webMethodName );
     }
     public String getWsIp() {
         return wsIp;
