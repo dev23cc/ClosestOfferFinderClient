@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.*;
+//import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.databind.*;
 
 import org.apache.http.HttpEntity;
@@ -18,32 +18,28 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import gr.teicm.se.closestofferfinder.client.logic.Controller;
-import gr.teicm.se.closestofferfinder.client.logic.Offer;
-import gr.teicm.se.closestofferfinder.client.logic.interfaces.Store;
+import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
+import gr.teicm.se.closestofferfinder.client.logic.concurrency.Task;
+import gr.teicm.se.closestofferfinder.client.logic.model.Store;
 
 
 public class MainActivity extends Activity {
     protected Controller controller;
     protected String name;
+    protected String s;
     protected Offer offer;
     private View view;
-
+    private Task clientTask;
     private class GetFileTask extends AsyncTask<String, Void, String> {
      protected String doInBackground(String... urls) {
          return getFile(urls[0]);
@@ -55,10 +51,10 @@ public class MainActivity extends Activity {
          Offer myOffer = new Offer();
          JSONObject obj = new JSONObject();
          JSONObject offobj = new JSONObject();
-         RestTemplate restTemplate= new RestTemplate();
+     //    RestTemplate restTemplate= new RestTemplate();
          //   Offer offer;
          try {
-                version = response;
+               // version = result;
              URL jsonURL = new URL("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3");
           //   JSONArray arr = new JSONArray("{\"offer\":{\"id\":3,\"compId\":2,\"catId\":1,\"offerName\":\"σοκολάτες\",\"descr\":\"20% φθηνότερα\",\"disc\":20,\"price\":1.5}}");
              obj = new JSONObject(result);
@@ -95,7 +91,7 @@ public class MainActivity extends Activity {
             // name = result;
                 MainActivity.this.populateListView();
              Toast.makeText(getBaseContext(),
-                     ofname,
+                     s,
                      Toast.LENGTH_SHORT).show();
            //  ObjectMapper mapper = new ObjectMapper();
           //   Offer[] myoffer = mapper.readValue(result, Offer[].class);
@@ -106,9 +102,10 @@ public class MainActivity extends Activity {
  }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       // controller= new Controller();
+        controller= new Controller();
+  //      name = controller.getOfferName().toString();
     //    name= controller.hasBody();
-
+       // clientTask = new Task();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -118,15 +115,11 @@ public class MainActivity extends Activity {
         String jsonFile=null;
         try {
             HttpClient client = new DefaultHttpClient();
-      //      URI webService = new URI("http://83.212.101.78:8080/WSoffer/service/getOffersByStoreJSON/0");
             HttpGet request = new HttpGet(url);
-   //         request.setURI(webService);
             HttpResponse response = client.execute(request);
             HttpEntity entity = response.getEntity();
             InputStream inputStream = entity.getContent();
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(inputStream));
-   //         in = new BufferedReader( new InputStreamReader(response.getEntity().getContent()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuffer sb = new StringBuffer("");
             String line ="";
             String newLine = System.getProperty("line.separator");
@@ -151,7 +144,8 @@ public class MainActivity extends Activity {
 
         };
         httpClient.start();*/
-        if(name==null) name ="null";
+
+        if(name==null) name ="isnull";
 
         String[] myItems= {name,"Second Offer","Third Offer"} ;
 
@@ -179,8 +173,11 @@ public class MainActivity extends Activity {
           //  new GetFileTask().execute(
           //          "http://83.212.101.78:8080/WSoffer/service/getAllOffersJSON"  );
 
-            new GetFileTask().execute("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3");
+         //   this.s = clientTask.downloadJsonResource();
+         //   new GetFileTask().execute("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3");
+            name = controller.getOfferName();
             populateListView();
+
 
         }
 
