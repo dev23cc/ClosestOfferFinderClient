@@ -1,4 +1,4 @@
-package gr.teicm.se.closestofferfinder.client.logic;
+package gr.teicm.se.closestofferfinder.client.logic.model;
 
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
- * Created by user on 25/11/2014.
+ * Created by dev23cc on 25/11/2014.
  */
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
