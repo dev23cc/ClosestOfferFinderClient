@@ -35,13 +35,11 @@ public class WebServiceDao implements IDao {
         return (response);
 
     }
-    @Override
-    public IRequest getRequest() {
-        return null;
-    }
-    @Override
-    public Offer getOffer() {
-        return null;
-    }
+
     public Boolean hasBody() {return null;}
+
+    @Override
+    public String getOffers() {
+        return null;
+    }
 }

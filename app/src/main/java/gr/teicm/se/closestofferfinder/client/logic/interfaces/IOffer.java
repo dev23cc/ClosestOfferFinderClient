@@ -3,7 +3,7 @@ package gr.teicm.se.closestofferfinder.client.logic.interfaces;
 /**
  * Created by dev23cc on 21/11/2014.
  */
-public interface IOffer extends IRequest{
+public interface IOffer {
     int getOfferId();
     int getCategoryId();
     int getCompanyId();
@@ -11,5 +11,8 @@ public interface IOffer extends IRequest{
     String getDescription();
     double getOfferPrice();
     double getOfferDiscount();
+    double getLatitude();
+    double getLongtitude();
+    double getRadius();
 }
 

@@ -9,6 +9,29 @@ public enum WebServiceDetails {
         public String toString() {
             return("83.212.101.78");
         }
+    },
+    WEBSERVICE_PORT {
+        @Override
+        public String toString() {
+            return("8080");
+        }
+    },
+    WEBSERVICE_PROTOCOL {
+        @Override
+        public String toString() {
+            return ("http");
+        }
+    },
+    WEBAPPLICATION_NAME {
+        @Override
+        public String toString() {
+            return ("WSoffer");
+        }
+    },
+    GET_ALL_OFFERS_JSON {
+        @Override
+        public String toString() {
+            return ("getAllOffersJSON");
+        }
     }
-
 }

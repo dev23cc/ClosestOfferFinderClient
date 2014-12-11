@@ -10,11 +10,10 @@ import java.util.concurrent.Future;
 /**
  * Created by dev23cc on 21/11/2014.
  */
-public class RestClientDao implements IDao {
-    public static String result;
-    //WServiceContact wscnt;
-    public RestClientDao()  {
-
+public class HttpClientDao implements IDao {
+    public String result;
+    public HttpClientDao()  {
+        result="null";
 
     }
     public String getWSFile() throws Exception {
@@ -29,21 +28,9 @@ public class RestClientDao implements IDao {
         return(" ");
 
     }
-
     @Override
-    public IRequest getRequest() {
-        return null;
-    }
-
-    @Override
-    public IOffer getOffer() {
-        return(null);
-    }
-
-  //  @Override
-    public String setResponse(String result) {
-   //     new WServiceContact.execute(this);
-        return("");
+    public String getOffers() {
+        return(result);
     }
 
 
