@@ -1,9 +1,7 @@
 package gr.teicm.se.closestofferfinder.client.presentation;
 
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -13,143 +11,50 @@ import android.widget.Toast;
 //import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.databind.*;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import gr.teicm.se.closestofferfinder.client.logic.Controller;
 import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
-import gr.teicm.se.closestofferfinder.client.logic.concurrency.Task;
-import gr.teicm.se.closestofferfinder.client.logic.model.Store;
+import gr.teicm.se.closestofferfinder.client.logic.model.OffersWrapper;
+
+import static org.bitbucket.dollar.Dollar.$;
 
 
 public class MainActivity extends Activity {
     protected Controller controller;
     protected String name;
-    protected String s;
-    protected Offer offer;
-    private View view;
-    private Task clientTask;
-    private class GetFileTask extends AsyncTask<String, Void, String> {
-     protected String doInBackground(String... urls) {
-         return getFile(urls[0]);
-     }
+    protected OffersWrapper[] offers ;
+    protected List<Offer> lst ;
+    //  private View view;
+  //  private Task clientTask;
 
-     protected void onPostExecute(String result) {
-         String version;
-         List<Offer> off = new ArrayList<Offer>();
-         Offer myOffer = new Offer();
-         JSONObject obj = new JSONObject();
-         JSONObject offobj = new JSONObject();
-     //    RestTemplate restTemplate= new RestTemplate();
-         //   Offer offer;
-         try {
-               // version = result;
-             URL jsonURL = new URL("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3");
-          //   JSONArray arr = new JSONArray("{\"offer\":{\"id\":3,\"compId\":2,\"catId\":1,\"offerName\":\"σοκολάτες\",\"descr\":\"20% φθηνότερα\",\"disc\":20,\"price\":1.5}}");
-             obj = new JSONObject(result);
-             offobj = obj.getJSONObject("offer");
-             String ofname = offobj.getString("offerName");
-             if(ofname == null) ofname="empty";
-           //  for (int i=0; i arr.length(); i++) off.add();
-             ObjectMapper mapper= new ObjectMapper();
-            Store store ;
-             store = mapper.readValue(result, Store.class);
-            offer = store.getOffer()   ;
-             ofname = offer.getOfferName() +" "+ offer.getDescription() ;
-             name = ofname;
-          //   offer = restTemplate.getForObject("http://83.212.101.78:8080/WSoffer/service/getOfferByIdJSON/3", Offer.class);
-           //  offer = store.getOffer()   ;
-           //  ofname = offer.getOfferName() +" "+ offer.getDescription() ;
-          //   String file ="[{\"offer\":{\"id\":1,\"compId\":0,\"catId\":0,\"offerName\":\"Α\",\"descr\":\"Προσφορά 1\",\"disc\":0,\"price\":100}}]";
-         //    ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
-            //List<Offer> reslt = mapper.readValue(result, mapper.getTypeFactory().constructCollectionType(List.class, Offer.class));
-         //    List<Offer> reslt = Arrays.asList(mapper.readValue(result, Offer[].class));
-           //// Offer[] offers=  mapper.readValue(file, Offer[].class);
-           //  Offer firstOffer = offers[0];
-           //  JsonNode obj = mapper.readTree(file);
-           // JsonNode node = obj.get("offerName");
-
-           //  name = reslt.get(1).getOfferName();
-            // name = offers[0].getOfferName();
-             //   JSONArray  array = reslt.getJSONArray("offer");
-           //  name = array.getJSONObject(1).getString("offerName");
-             /*for(int i=0; i<reslt.length(); i++) {
-            name = reslt.getJSONObject(i).getString("descr");
-             }*/
-            // name=description;
-            // name = result;
-                MainActivity.this.populateListView();
-             Toast.makeText(getBaseContext(),
-                     s,
-                     Toast.LENGTH_SHORT).show();
-           //  ObjectMapper mapper = new ObjectMapper();
-          //   Offer[] myoffer = mapper.readValue(result, Offer[].class);
-         } catch (Exception e) {
-             Log.d("ReadOfferJSONFeedTask", e.getLocalizedMessage());
-         }
-     }
- }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         controller= new Controller();
-  //      name = controller.getOfferName().toString();
-    //    name= controller.hasBody();
-       // clientTask = new Task();
+        this.offers = new OffersWrapper[0];
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
     }
-    public  String getFile(String url) {
-        BufferedReader in = null;
-        String jsonFile=null;
-        try {
-            HttpClient client = new DefaultHttpClient();
-            HttpGet request = new HttpGet(url);
-            HttpResponse response = client.execute(request);
-            HttpEntity entity = response.getEntity();
-            InputStream inputStream = entity.getContent();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuffer sb = new StringBuffer("");
-            String line ="";
-            String newLine = System.getProperty("line.separator");
-            while((line = reader.readLine()) !=null) {
-                sb.append(line + newLine);
-            }
-            inputStream.close();
-            jsonFile = sb.toString();
-            return jsonFile;
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return jsonFile;
-    }
+
     private void populateListView(){
-       // name = controller.getOfferName();
-      //  name=controller.getName();
-/*        Thread httpClient = new Thread(){
-            String jsonFile=getFile();
-            //if(jsonFile == null) name="rnull";
-
-
-        };
-        httpClient.start();*/
-
-        if(name==null) name ="isnull";
-
+        List<String> presentedOffers =new ArrayList<String>();
+        ObjectMapper mapper= new ObjectMapper();
+        try {
+            this.offers = mapper.readValue(controller.getOfferName(), OffersWrapper[].class);
+       } catch (IOException e) {
+            e.printStackTrace();
+        }
         String[] myItems= {name,"Second Offer","Third Offer"} ;
-
-        //     ArrayAdapter<String> adapter = new ArrayAdapter<String> (this,R.layout.offer,myItems) ;
+        List<OffersWrapper> wrappedOffers = new ArrayList<OffersWrapper>(Arrays.asList(offers));
+        List<Offer> offers = new ArrayList<Offer>();
+        for (OffersWrapper o: wrappedOffers) offers.add(o.getOffer());
+        for (Offer o: offers) presentedOffers.add("Offer Name: "+ o.getOfferName() + " Offer Description: " +o.getDescription() + " Offer Price:  " + o.getOfferPrice() + " Offer Discount: " + o.getOfferDiscount() + "%" + " Offer Location:" + o.getLatitude() + " " + o.getLatitude());
+        myItems = $(presentedOffers).toArray();
         ArrayAdapter<String> adapter = new ArrayAdapter<String> (this,R.layout.offer,myItems) ;
         ListView list = (ListView) findViewById(R.id.MyOffers) ;
 
@@ -165,9 +70,9 @@ public class MainActivity extends Activity {
     }
         public void OnClickedWSVersion(View view) {
 
-            new GetFileTask().execute(
+          /*  new GetFileTask().execute(
                     "http://83.212.101.78:8080/WSoffer/service/getVersionWsJSON"  );
-
+            */
         }
         public void OnClickedTrackOffers(View view){
           //  new GetFileTask().execute(

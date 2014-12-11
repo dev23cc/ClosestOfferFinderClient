@@ -33,5 +33,6 @@ public enum WebServiceDetails {
         public String toString() {
             return ("getAllOffersJSON");
         }
-    }
+    },
+
 }

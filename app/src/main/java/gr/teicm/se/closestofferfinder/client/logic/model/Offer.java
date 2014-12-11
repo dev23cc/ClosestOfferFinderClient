@@ -4,14 +4,12 @@ import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-/**
- * Created by dev23cc on 25/11/2014.
- */
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonRootName(value = "offer")
 public class Offer implements IOffer {
     @JsonProperty("id")
     int id;
