@@ -14,7 +14,6 @@ public class Task {
     private ExecutorService pool;
     HttpClient client ;
     FutureTask<String> httpFutureTask ;
-
     public Task() {
         pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         client = new HttpClient();

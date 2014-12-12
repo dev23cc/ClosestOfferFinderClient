@@ -48,10 +48,10 @@ public class HttpClient implements Callable<String> {
     }
 
     /**
-     * Computes a result, or throws an exception if unable to do so.
+     * Computes a resource, or throws an exception if unable to do so.
      *
-     * @return computed result
-     * @throws Exception if unable to compute a result
+     * @return computed resource
+     * @throws Exception if unable to compute a resource
      */
     @Override
     public String call() throws Exception {

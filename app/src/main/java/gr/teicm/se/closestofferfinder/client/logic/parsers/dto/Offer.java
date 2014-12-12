@@ -1,17 +1,14 @@
-package gr.teicm.se.closestofferfinder.client.logic.model;
+package gr.teicm.se.closestofferfinder.client.logic.parsers.dto;
 
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-/**
- * Created by dev23cc on 25/11/2014.
- */
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonRootName(value = "offer")
 public class Offer implements IOffer {
     @JsonProperty("id")
     int id;
@@ -26,15 +23,19 @@ public class Offer implements IOffer {
     @JsonProperty("disc")
     double disc;
     @JsonProperty("price")
+    //TODO: change double to a better type for money
     double price;
     public Offer() {
-/*        id=0;
+        initializeOffer();
+    }
+    private void initializeOffer(){
+        id=0;
         compId=0;
         catId=0;
         offerName="";
         descr="";
         disc=0;
-        price=0;*/
+        price=0;
     }
     @Override
     public int getOfferId() {
