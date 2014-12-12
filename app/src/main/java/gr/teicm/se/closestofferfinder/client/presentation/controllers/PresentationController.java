@@ -19,7 +19,7 @@ public class PresentationController {
         List<Offer> offer = new ArrayList<Offer>();
         presentedOffers =new ArrayList<String>();
         controller= new LogicController();
-        offer = controller.getOffers();
+        offer = controller.getOffer();
         initializeOffers(offer);
     }
     private void initializeOffers(List<Offer> offer) {
