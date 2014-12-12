@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
+import gr.teicm.se.closestofferfinder.client.logic.parsers.dto.Offer;
 import gr.teicm.se.closestofferfinder.client.logic.model.OffersWrapper;
 import gr.teicm.se.closestofferfinder.client.logic.model.definitions.ClassType;
 

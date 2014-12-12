@@ -2,9 +2,7 @@ package gr.teicm.se.closestofferfinder.client.logic.dao;
 
 import org.springframework.web.client.RestTemplate;
 
-import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IDao;
-import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
 
 /**
  * Created by dev23cc on 25/11/2014.

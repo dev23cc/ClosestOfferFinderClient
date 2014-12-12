@@ -5,7 +5,7 @@ import java.util.List;
 
 import gr.teicm.se.closestofferfinder.client.logic.dao.HttpClientDao;
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
-import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
+import gr.teicm.se.closestofferfinder.client.logic.parsers.dto.Offer;
 import gr.teicm.se.closestofferfinder.client.logic.parsers.Parser;
 import gr.teicm.se.closestofferfinder.client.logic.model.definitions.ClassType;
 

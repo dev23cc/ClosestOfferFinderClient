@@ -37,17 +37,21 @@
             android:layout_height="wrap_content"
             android:text="Client App Version"
             android:id="@+id/button3"
-            android:layout_gravity="right"
+            android:layout_gravity="center_horizontal"
             android:layout_weight="0.05"
             android:onClick="OnClickedClientVersion" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WS Version"
-            android:id="@+id/button2"
-            android:layout_weight="0.05"
-            android:onClick="OnClickedWSVersion" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WS Version"
+        android:id="@+id/button2"
+        android:layout_weight="0.05"
+        android:onClick="OnClickedWSVersion"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button" />
 
 </RelativeLayout>

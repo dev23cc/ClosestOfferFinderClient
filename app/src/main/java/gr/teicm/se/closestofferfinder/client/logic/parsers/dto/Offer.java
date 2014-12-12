@@ -1,4 +1,4 @@
-package gr.teicm.se.closestofferfinder.client.logic.model;
+package gr.teicm.se.closestofferfinder.client.logic.parsers.dto;
 
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
