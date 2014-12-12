@@ -1,6 +1,7 @@
 package gr.teicm.se.closestofferfinder.client.logic.requests;
 
-import gr.teicm.se.closestofferfinder.client.logic.interfaces.IOffer;
+import java.util.List;
+
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
 
 /**
@@ -8,7 +9,7 @@ import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
  */
 public class ClosestOffersRequest implements IRequest {
     @Override
-    public IOffer getOffers() {
+    public List<gr.teicm.se.closestofferfinder.client.logic.model.Offer> getOffers() {
         return null;
     }
 }

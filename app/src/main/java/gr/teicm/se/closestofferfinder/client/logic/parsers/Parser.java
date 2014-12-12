@@ -9,17 +9,19 @@ import java.util.List;
 
 import gr.teicm.se.closestofferfinder.client.logic.model.Offer;
 import gr.teicm.se.closestofferfinder.client.logic.model.OffersWrapper;
-import gr.teicm.se.closestofferfinder.client.logic.webservicenames.ClassType;
+import gr.teicm.se.closestofferfinder.client.logic.model.definitions.ClassType;
 
 /**
  * Created by dev23cc on 11/12/2014.
  */
 public class Parser {
+    public List<Offer> getOffers() {
+        return offers;
+    }
     List<Offer> offers;
     private Parser() {
-
     }
-    public Parser(String data, ClassType classType) {
+    public  Parser(String data, ClassType classType) {
         offers = new ArrayList<Offer>();
         if(classType == ClassType.OFFER) offers = parseOffer(data);
     }
@@ -31,10 +33,9 @@ public class Parser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         List<OffersWrapper> wrappedOffers = new ArrayList<OffersWrapper>(Arrays.asList(wrappedOffersArray));
         List<Offer> offers = new ArrayList<Offer>();
-        for (OffersWrapper o: wrappedOffers) offers.add(o.getOffer());
+        for (OffersWrapper offerWrapper: wrappedOffers) offers.add(offerWrapper.getOffer());
         return(offers);
     }
 }

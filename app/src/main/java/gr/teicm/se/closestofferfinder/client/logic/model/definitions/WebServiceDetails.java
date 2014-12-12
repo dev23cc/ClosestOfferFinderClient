@@ -1,4 +1,4 @@
-package gr.teicm.se.closestofferfinder.client.logic.webservicenames;
+package gr.teicm.se.closestofferfinder.client.logic.model.definitions;
 
 /**
  * Created by user on 8/12/2014.

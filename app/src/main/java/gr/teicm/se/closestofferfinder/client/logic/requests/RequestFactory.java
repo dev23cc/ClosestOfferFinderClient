@@ -1,7 +1,7 @@
 package gr.teicm.se.closestofferfinder.client.logic.requests;
 
 import gr.teicm.se.closestofferfinder.client.logic.interfaces.IRequest;
-import gr.teicm.se.closestofferfinder.client.logic.webservicenames.WebServiceDetails;
+import gr.teicm.se.closestofferfinder.client.logic.model.definitions.WebServiceDetails;
 
 /**
  * Created by dev23cc on 9/12/2014.
