@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gr.teicm.se.closestofferfinder.client.presentation" >
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -18,8 +20,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="gr.teicm.se.closestofferfinder.client.presentation.MyOffers"
+            android:name=".MyOffers"
             android:label="@string/title_activity_my_offers" >
+        </activity>
+        <activity
+            android:name=".activities.OfferDescription"
+            android:label="@string/title_activity_offer_description" >
+        </activity>
+        <activity
+            android:name=".activities.IntroActivity"
+            android:label="@string/title_activity_intro" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
