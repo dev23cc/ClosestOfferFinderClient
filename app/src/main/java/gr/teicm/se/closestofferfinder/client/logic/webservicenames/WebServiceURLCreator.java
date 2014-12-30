@@ -3,8 +3,8 @@ package gr.teicm.se.closestofferfinder.client.logic.webservicenames;
 /**
  * Created by dev23cc on 5/12/2014.
  */
-public class WebServiceName {
-    public WebServiceName() {
+public class WebServiceURLCreator {
+    public WebServiceURLCreator() {
         setMethods();
     }
     public void setMethods() {

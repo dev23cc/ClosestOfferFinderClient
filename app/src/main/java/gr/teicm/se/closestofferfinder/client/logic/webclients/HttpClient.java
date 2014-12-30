@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.concurrent.Callable;
 
-import gr.teicm.se.closestofferfinder.client.logic.webservicenames.WebServiceName;
+import gr.teicm.se.closestofferfinder.client.logic.webservicenames.WebServiceURLCreator;
 
 /**
  * Created by dev23cc on 5/12/2014.
@@ -19,7 +19,7 @@ public class HttpClient implements Callable<String> {
     String response;
     public HttpClient() {
         response="null";
-        response = getFile(new WebServiceName().createFullWSUrl());
+        response = getFile(new WebServiceURLCreator().createFullWSUrl());
     }
 
     public  String getFile(String url) {
@@ -55,6 +55,6 @@ public class HttpClient implements Callable<String> {
      */
     @Override
     public String call() throws Exception {
-        return(getFile(new WebServiceName().createFullWSUrl()));
+        return(getFile(new WebServiceURLCreator().createFullWSUrl()));
     }
 }
