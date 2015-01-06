@@ -38,4 +38,6 @@ dependencies {
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
     compile 'com.ning:async-http-client:1.9.0-BETA23'
     compile 'org.bitbucket.dollar:dollar:1.0-beta3'
+    compile 'com.android.support:appcompat-v7:20.+'
+    compile 'com.google.android.gms:play-services:6.5.+'
 }

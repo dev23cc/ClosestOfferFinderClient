@@ -8,5 +8,6 @@
     <string name="getWSVersion">getWSVersion</string>
     <string name="title_activity_offer_description">Offer Description</string>
     <string name="title_activity_intro">IntroActivity</string>
+    <string name="title_activity_location_awareness">My Location</string>
 
 </resources>

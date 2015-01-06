@@ -1,11 +1,15 @@
 package gr.teicm.se.closestofferfinder.client.presentation.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 
 import gr.teicm.se.closestofferfinder.client.presentation.R;
 import gr.teicm.se.closestofferfinder.client.presentation.controllers.PresentationController;
@@ -19,6 +23,7 @@ public class MainActivity extends Activity {
         initialize();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
     private void initialize() {
         presentationController = new PresentationController();
@@ -34,6 +39,13 @@ public class MainActivity extends Activity {
         Toast.makeText(getBaseContext(),
                 "Client Version 0.0.1",
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void OnButtonClickedMyLocation(View v) {
+
+        startActivity(new Intent(MainActivity.this,LocationAwarenessActivity.class)) ;
+
+
     }
     public void OnClickedWSVersion(View view) {
 
