@@ -37,7 +37,8 @@ public class DownloadParseTask {
         while(true) if(downloadParseTask.isDone()) {
             shutdown();
             try {
-                resource = downloadParseTask.get();
+                //resource = downloadParseTask.get();
+                downloadParseTask.get();
                 return(resource);
             } catch (InterruptedException e) {
                 e.printStackTrace();
