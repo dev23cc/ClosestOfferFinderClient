@@ -10,7 +10,6 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
-        testApplicationId "gr.teicm.se.closestofferfinder.client.test"
     }
     buildTypes {
         release {
@@ -39,6 +38,5 @@ dependencies {
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
     compile 'com.ning:async-http-client:1.9.0-BETA23'
     compile 'org.bitbucket.dollar:dollar:1.0-beta3'
-    compile 'com.android.support:appcompat-v7:20.+'
-    compile 'com.google.android.gms:play-services:6.5.+'
+    compile 'com.android.support:support-v4:21.0.2'
 }

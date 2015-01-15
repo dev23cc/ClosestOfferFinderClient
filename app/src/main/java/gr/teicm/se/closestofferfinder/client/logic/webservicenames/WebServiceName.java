@@ -24,7 +24,8 @@ public class WebServiceName {
     }
 
     private void setWSIp() {
-        this.wsIp = "83.212.101.78";
+        this.wsIp="83.212.113.113";
+        //this.wsIp = "83.212.101.78";
     }
 
     public String getWebApplicationName() {
@@ -32,7 +33,8 @@ public class WebServiceName {
     }
 
     private void setWebApplicationName() {
-        webApplicationName = "WSoffer";
+        webApplicationName ="ClosestOfferFinderWS-ver-0.2";
+      //  webApplicationName = "WSoffer";
     }
 
     public String getWebMethodName() {
@@ -47,7 +49,8 @@ public class WebServiceName {
     }
 
     private void setWSPort() {
-        this.wsPort = "8080";
+        this.wsPort="8180";
+     //   this.wsPort = "8080";
     }
 
     private void setProtocol() {

@@ -15,9 +15,11 @@ import gr.teicm.se.closestofferfinder.client.presentation.controllers.Presentati
 public class MainActivity extends Activity {
     protected PresentationController presentationController;
     String[] offers;
+    Intent nextScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         initialize();
+        nextScreen = new Intent(getApplicationContext(), IntroActivity.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -45,7 +47,7 @@ public class MainActivity extends Activity {
 
     }
     public void OnClickedWSVersion(View view) {
-
+        startActivity(nextScreen);
     }
     public void OnClickedTrackOffers(View view){
             populateListView();

@@ -23,6 +23,8 @@ public class OffersRequest implements IRequest {
         offerData = dao.getOffers();
         offerParser = new Parser(offerData, ClassType.OFFER);
         offers = offerParser.getOffers();
+
+
     }
 
     @Override
