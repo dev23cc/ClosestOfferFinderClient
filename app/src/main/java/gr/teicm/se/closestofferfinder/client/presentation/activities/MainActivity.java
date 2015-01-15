@@ -8,9 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
-
 import gr.teicm.se.closestofferfinder.client.presentation.R;
 import gr.teicm.se.closestofferfinder.client.presentation.controllers.PresentationController;
 
@@ -37,7 +34,7 @@ public class MainActivity extends Activity {
     }
     public void OnClickedClientVersion(View view) {
         Toast.makeText(getBaseContext(),
-                "Client Version 0.0.1",
+                "Client Version 0.0.5",
                 Toast.LENGTH_SHORT).show();
     }
 

@@ -14,14 +14,14 @@ import gr.teicm.se.closestofferfinder.client.logic.model.definitions.WebServiceD
  * Created by dev23cc on 21/11/2014.
  */
 public class LogicController {
-    List<Offer> offers;
+    static List<Offer> offers;
     IRequest offersRequest;
     public LogicController() {
         offers = new ArrayList<Offer>();
         offersRequest = new RequestFactory().getInstance(WebServiceDetails.GET_ALL_OFFERS_JSON);
         offers=offersRequest.getOffers();
     }
-    public List<Offer> getOffers() {
+    public static List<Offer> getOffers() {
         return(offers);
     }
 }

@@ -1,4 +1,4 @@
-package gr.teicm.se.closestofferfinder.client.presentation;
+package gr.teicm.se.closestofferfinder.client.test;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
