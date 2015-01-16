@@ -8,11 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import gr.teicm.se.closestofferfinder.client.logic.location.Location;
+import gr.teicm.se.closestofferfinder.client.logic.model.Coordinates;
 import gr.teicm.se.closestofferfinder.client.presentation.R;
 import gr.teicm.se.closestofferfinder.client.presentation.controllers.PresentationController;
 
 
 public class MainActivity extends Activity {
+    protected Location location;
+    protected Coordinates coordinates;
+    protected String latlon;
+    private Integer lat;
     protected PresentationController presentationController;
     String[] offers;
     Intent nextScreen;
@@ -25,7 +31,12 @@ public class MainActivity extends Activity {
 
     }
     private void initialize() {
+        location = new Location(this.getApplicationContext());
+        coordinates = location.getCoordinates();
+        latlon = new String();
+      //  lat = (int) coordinates.getLongitude()  ;
         presentationController = new PresentationController();
+       // presentationController.setContext(getBaseContext());
         offers = presentationController.getOffers();
     }
     private void populateListView(){
@@ -42,7 +53,13 @@ public class MainActivity extends Activity {
 
     public void OnButtonClickedMyLocation(View v) {
 
-        startActivity(new Intent(MainActivity.this,LocationAwarenessActivity.class)) ;
+        Toast.makeText(getBaseContext(),
+                "Longtitude: " + coordinates.getLongitude() + " \n Latitude: " + coordinates.getLatidude(),
+                Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(getBaseContext(),  Double.valueOf( (coordinates.getLatidude())).toString()  ,
+                Toast.LENGTH_SHORT).show();
+       // startActivity(new Intent(MainActivity.this,LocationAwarenessActivity.class)) ;
 
 
     }

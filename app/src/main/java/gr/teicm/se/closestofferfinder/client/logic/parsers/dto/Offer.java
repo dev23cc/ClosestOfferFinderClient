@@ -26,6 +26,7 @@ public class Offer implements IOffer {
     //TODO: change double to a better type for money
     double price;
     public Offer() {
+
         initializeOffer();
     }
     private void initializeOffer(){

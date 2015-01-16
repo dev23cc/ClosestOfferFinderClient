@@ -33,7 +33,7 @@ public class WebServiceName {
     }
 
     private void setWebApplicationName() {
-       // webApplicationName ="ClosestOfferFinderWS-ver-0.2";
+      //  webApplicationName ="ClosestOfferFinderWS-ver-0.2";
         webApplicationName = "WSoffer";
     }
 
@@ -49,7 +49,7 @@ public class WebServiceName {
     }
 
     private void setWSPort() {
-      //  this.wsPort="8180";
+       // this.wsPort="8180";
         this.wsPort = "8080";
     }
 
